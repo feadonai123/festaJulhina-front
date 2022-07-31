@@ -62,7 +62,7 @@ export const Content = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
+  gap: 1rem;
 
   &>div{
     display: flex;
@@ -84,7 +84,7 @@ export const Content = styled.div`
       padding-top: 1rem;
       justify-content: center;
       transition: all 0.3s ease-in-out;
-      max-height: 200px;
+      max-height: 500px;
 
       ${props=>props.collapse && css`
         max-height: 0;
@@ -96,7 +96,7 @@ export const Content = styled.div`
       `}
     }
   }
-  h1{
+  h1, h2, h3{
     margin: 0;
   }
 
@@ -114,16 +114,28 @@ export const Links = styled.div`
     flex-direction: column;
   }
 
-
   a{
     cursor: pointer;
     background-color: var( --color-ruby);
-    padding: 0.5rem;
+    padding: 0 0.5rem;
+    height: 2rem;
     font-size: 1rem;
     color: white;
     border-radius: 24px;
     box-shadow:0px 0px 5px 1px #00000040;
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    img{
+      width: 2.1rem;
+      height: 2.1rem;
+      object-fit: contain;
+      border-radius: 100%;
+      border-style: groove;
+    }
 
     &:hover{
       transform: scale(1.03);

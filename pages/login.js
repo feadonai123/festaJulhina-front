@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styles from '../styles/Login.module.css'
 import { useUser } from '../hooks/user'
 import { useRouter } from 'next/router'
+import RequestHelper from '../utils/RequestHelper'
 
 export default function Home () {
   const router = useRouter()
@@ -56,4 +57,26 @@ export default function Home () {
       </div>
     </div>
   )
+}
+
+
+
+
+export async function getServerSideProps (context) {
+  const 
+    token = context.req.cookies['token'],
+    responseCheckToken = await RequestHelper.post(`http://${context.req.headers.host}/api/auth/checkToken`, { token }),
+    userData = responseCheckToken && responseCheckToken.success && responseCheckToken?.data ? responseCheckToken.data : null
+  
+  if (userData){
+    return {
+      redirect: {
+        permanent: false,
+        destination: `/admin`,
+      },
+      props:{},
+    };
+  }
+
+  return { props: { } }
 }

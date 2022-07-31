@@ -8,29 +8,23 @@ const API = "http://localhost:1234"
 
 const UserProvider = ({ children }) => {
 
-  const [ User, setUser ] = useState([])
+  const [ user, setUser ] = useState(null)
 
   const login = async({ username, password })=>{
     const resultLogin = await RequestHelper.post("/api/auth/login", { username, password })
     if(!resultLogin.success) return false
-
-    const 
-      userData = resultLogin.data.user,
-      token = resultLogin.data.token,
-      newData = {
-        ...userData,
-        image: API + userData.image
-      }
-
-    setUser(newData)
-    CookieStorage.set("token", token)
-    
+    CookieStorage.set("token", resultLogin.data.token)
     return true
+  }
+
+  const logout = ()=>{
+    CookieStorage.clear("token")
+    window.location.reload()
   }
 
   return (
     <UserContext.Provider
-      value={{ User, setUser, login }}>
+      value={{ user, setUser, login, logout }}>
       {children}
     </UserContext.Provider>
   );
