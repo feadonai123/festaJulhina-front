@@ -40,11 +40,22 @@ export default function Admin ({ products, categories }) {
   return (
     <main className={styles.container}>
       <div className={styles.content}>
-        <div className={styles.menu}>
-          <button onClick={handleClickEditarProd} className={mode=="editarProd" ? styles.btnSelected : ""}>EP</button>
-          <button onClick={handleClickEditarCat} className={mode=="editarCat" ? styles.btnSelected : ""}>EC</button>
-          <button onClick={handleClickCriarProd} className={mode=="criarProd" ? styles.btnSelected : ""}>CP</button>
-          <button onClick={handleClickCriarCat} className={mode=="criarCat" ? styles.btnSelected : ""}>CC</button>
+        <div className={styles.header}></div>
+        <div className={styles.nav}>
+          <div className={styles.group}>
+            <p>Edição</p>
+            <div className={styles.list}>
+              <div onClick={handleClickEditarProd} data-selected={mode=="editarProd"} className={mode=="editarProd" ? styles.btnSelected : ""}>Editar Produtos</div>
+              <div onClick={handleClickEditarCat} data-selected={mode=="editarCat"}  className={mode=="editarCat" ? styles.btnSelected : ""}>Editar Categorias</div>
+            </div>
+          </div>
+          <div className={styles.group}>
+            <p>Criação</p>
+            <div className={styles.list}>
+              <div onClick={handleClickCriarProd} data-selected={mode=="criarProd"} className={mode=="criarProd" ? styles.btnSelected : ""}>Criar Produtos</div>
+              <div onClick={handleClickCriarCat} data-selected={mode=="criarCat"} className={mode=="criarCat" ? styles.btnSelected : ""}>Criar Categorias</div>
+            </div>
+          </div>
         </div>
         <div className={styles.main}>
           {mode == "criarProd" && <FormProduto/>}
@@ -52,6 +63,7 @@ export default function Admin ({ products, categories }) {
           {mode == "editarProd" && <EditarProd products={products}/>}
           {mode == "editarCat" && <EditarCat products={products}/>}
         </div>
+        <div className={styles.footer}></div>
       </div>
     </main>
   )

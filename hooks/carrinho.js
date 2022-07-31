@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import LocalStorage from '../utils/localStorage';
+import LocalStorage from '../utils/LocalStorage';
 
 const CarrinhoContext = createContext();
 

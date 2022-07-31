@@ -50,7 +50,7 @@ export const IconEdit = styled.div`
 export const Card = styled.div`
   position:relative;
   cursor: pointer;
-  background-color: var(--color-papaya-whip);
+  background-color: var(--color-write);
   display: flex;
   flex-direction: column;
   max-width: 200px;
