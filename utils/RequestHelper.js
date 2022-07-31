@@ -1,4 +1,5 @@
 import axios from 'axios'
+import CookieStorage from './CookieStorage'
 
 export default class RequestHelper {
 
@@ -6,12 +7,13 @@ export default class RequestHelper {
     'Content-Type': 'application/json',
   }
 
-  static async get (url) {
+  static async get (url, headers = {}) {
 
     let success = false, result = undefined, message = undefined
+    const mixedHeaders = { headers: { ...RequestHelper.HEADERS, ...headers } }
 
     try {
-      const response = await axios.get(url)
+      const response = await axios.get(url, mixedHeaders)
       if(!response.data.success) throw new Error(response.data.message)
 
       result = response.data.data
@@ -23,12 +25,13 @@ export default class RequestHelper {
     return { success, data: result, message }
   }
 
-  static async delete (url) {
+  static async delete (url, headers = {}) {
 
     let success = false, result = undefined, message = undefined
+    const mixedHeaders = { headers: { ...RequestHelper.HEADERS, ...headers } }
 
     try {
-      const response = await axios.delete(url)
+      const response = await axios.delete(url, mixedHeaders)
       if(!response.data.success) throw new Error(response.data.message)
 
       result = response.data.data

@@ -3,8 +3,8 @@ import { Form, Row, Left, Right, ImageContent, Submit, Separator } from './style
 import React, { useState, useRef, useEffect } from 'react'
 import { useCategories } from '../../hooks/categories'
 import RequestHelper from "../../utils/RequestHelper"
-import { Image } from '../../utils/Image'
-import onChangeInput from '../../utils/onChangeInput'
+import Image from '../../utils/Image'
+import OnChangeInput from '../../utils/onChangeInput'
 import Validate from '../../utils/Validate'
 import OnBlur from '../../utils/onBlurInput'
 import LocalStorage from '../../utils/LocalStorage'
@@ -115,7 +115,7 @@ export default function FormCategoria ({ categorie = null, callback = ()=>{} }) 
   const onChangeFormData = (key, data)=>{
     const 
       format = {
-        value: (data)=>onChangeInput.value(data)
+        value: (data)=>OnChangeInput.value(data)
       },
       newData = format[key] ? format[key](data) : data
   

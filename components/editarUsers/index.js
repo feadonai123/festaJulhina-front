@@ -3,7 +3,7 @@ import { Content } from './styles'
 const EditarUser = ({ ...props })=>{
   return(
     <Content>
-      Editar Usuários
+      Editar User
     </Content>
   )
 }

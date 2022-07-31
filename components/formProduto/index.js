@@ -4,8 +4,8 @@ import React, { useState, useRef, useEffect } from 'react'
 import { useProducts } from '../../hooks/products'
 import { useCategories } from '../../hooks/categories'
 import RequestHelper from "../../utils/RequestHelper"
-import { Image } from '../../utils/Image'
-import onChangeInput from '../../utils/onChangeInput'
+import Image from '../../utils/Image'
+import OnChangeInput from '../../utils/onChangeInput'
 import Validate from '../../utils/Validate'
 import OnBlur from '../../utils/onBlurInput'
 import LocalStorage from '../../utils/LocalStorage'
@@ -137,7 +137,7 @@ export default function FormProduto ({ product = null, callback = ()=>{} }) {
   const onChangeFormData = (key, data)=>{
     const 
       format = {
-        value: (data)=>onChangeInput.value(data)
+        value: (data)=>OnChangeInput.value(data)
       },
       newData = format[key] ? format[key](data) : data
   

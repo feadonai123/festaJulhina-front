@@ -4,6 +4,7 @@ export default class CRUD{
 
   collection = []
   url = ""
+  HEADERS = {}
   /*
     formatCreateData
     formatUpdateData
@@ -15,23 +16,23 @@ export default class CRUD{
   }
 
   async create(data){
-    return await RequestHelper.post(this.url, this.formatCreateData(data))
+    return await RequestHelper.post(this.url, this.formatCreateData(data), this.HEADERS)
   }
 
   async update(id, data){
-    return await RequestHelper.patch(`${this.url}/${id}`, this.formatUpdateData(data))
+    return await RequestHelper.patch(`${this.url}/${id}`, this.formatUpdateData(data), this.HEADERS)
   }
   
   async get(id){
-    return await RequestHelper.get(`${this.url}/${id}`)
+    return await RequestHelper.get(`${this.url}/${id}`, this.HEADERS)
   }
 
   async excluir(id){
-    return await RequestHelper.delete(`${this.url}/${id}`)
+    return await RequestHelper.delete(`${this.url}/${id}`, this.HEADERS)
   }
 
   async getAll(){
-    return await RequestHelper.get(this.url)
+    return await RequestHelper.get(this.url, this.HEADERS)
   }
 
 }

@@ -1,6 +1,6 @@
 
 
-export class Image{
+export default class Image{
   static fileToBase64Compress(file){
     return new Promise(resolve=>{
       const reader = new FileReader();

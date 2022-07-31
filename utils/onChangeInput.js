@@ -1,4 +1,4 @@
-export default class onChangeInput{
+export default class OnChangeInput{
 
   static value(data){
     let v = data.replace(/^0+/, '').replace(/[^0-9.]/g, "")
