@@ -5,6 +5,8 @@ import Produtos from '../api/produtos'
 import Categories from '../api/categorias'
 import ReactModal from 'react-modal'
 import ProductDetails from "../components/productDetails"
+import { useProducts } from "../hooks/products"
+import { useCategories } from "../hooks/categories"
 
 ReactModal.setAppElement('#__next');
 
@@ -13,6 +15,14 @@ export default function Products ({ products, categories }) {
   const [ productsShow, setProductsShow ] = useState([])
   const [ modalIsOpen, setModalIsOpen ] = useState(false)
   const [ productSelected, setProductSelected] = useState()
+
+  const { setProducts } = useProducts()
+  const { setCategories } = useCategories()
+
+  useEffect(()=>{
+    setProducts(products)
+    setCategories(categories)
+  }, [ products, setProducts, categories, setCategories ])
 
   useEffect(()=>{
     filterProducts()

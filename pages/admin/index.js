@@ -17,9 +17,6 @@ export default function Admin ({ products, categories }) {
   const [ mode, setMode ] = useState("editarProd")
 
   useEffect(()=>{
-    console.log("products", products)
-    console.log("categories", categories)
-
     setProducts(products)
     setCategories(categories)
   }, [ products, setProducts, categories, setCategories ])

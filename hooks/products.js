@@ -36,7 +36,7 @@ const ProductsProvider = ({ children }) => {
       tempProducts = [...products],
       indexExcluir = tempProducts.findIndex(product=>product._id == id)
 
-    if(editProduct == -1) return
+    if(indexExcluir == -1) return
     tempProducts = tempProducts.filter((el,index)=>index != indexExcluir)
     setProducts(tempProducts)
   }

@@ -36,7 +36,7 @@ const CategoriesProvider = ({ children }) => {
       tempCategories = [...categories],
       indexExcluir = tempCategories.findIndex(product=>product._id == id)
 
-    if(id == -1) return
+    if(indexExcluir == -1) return
     tempCategories = tempCategories.filter((el,index)=>index != indexExcluir)
     setCategories(tempCategories)
   }
