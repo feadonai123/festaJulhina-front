@@ -1,5 +1,6 @@
 import styles from '../../styles/Admin.module.css'
 import React, { useState, useEffect } from 'react'
+import RequestHelper from '../../utils/RequestHelper'
 import Produtos from "../../api/produtos"
 import Categories from "../../api/categorias"
 import FormProduto from '../../components/formProduto'
@@ -69,12 +70,28 @@ export default function Admin ({ products, categories }) {
   )
 }
 
-export async function getStaticProps () {
-  let products = [], categories = []
+export async function getServerSideProps (context) {
+  let products = [], categories = [], user = undefined;
+  
+  const 
+    token = context.req.cookies['token'],
+    responseCheckToken = await RequestHelper.post(`http://${context.req.headers.host}/api/auth/checkToken`, { token }),
+    userData = responseCheckToken && responseCheckToken.success && responseCheckToken?.data ? responseCheckToken.data : null
+  
+  if (!userData){
+    return {
+      redirect: {
+        permanent: false,
+        destination: `/login`,
+      },
+      props:{},
+    };
+  }
+  user = userData
+  
   const productsResponse = await Produtos.getAll()
   const categoriesResponse = await Categories.getAll()
 
-  // TODO ver o q acontece quando da falha
   if(!productsResponse.success || !categoriesResponse.success){}
   else {
     categories = categoriesResponse.data.map(cat=>{
@@ -91,5 +108,5 @@ export async function getStaticProps () {
     })
   }
 
-  return { props: { products, categories }, revalidate: 10 }
+  return { props: { products, categories, user } }
 }

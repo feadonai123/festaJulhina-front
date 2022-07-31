@@ -27,7 +27,6 @@ export default class CRUD{
   }
 
   async excluir(id){
-    console.log('excluir')
     return await RequestHelper.delete(`${this.url}/${id}`)
   }
 

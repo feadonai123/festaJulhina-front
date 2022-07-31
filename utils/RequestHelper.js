@@ -29,7 +29,6 @@ export default class RequestHelper {
 
     try {
       const response = await axios.delete(url)
-      console.log(response)
       if(!response.data.success) throw new Error(response.data.message)
 
       result = response.data.data
