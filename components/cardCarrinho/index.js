@@ -38,14 +38,14 @@ const CardCarrinho = ({ index, ...props })=>{
   return (
     <Content {...props} onClick={handleCollapse}>
       <Main>
-        <div style={{ justifyContent: "flex-start" }}>
+        <div>
           <img src={product?.image} alt={product?.updated_at}></img>
           <h2>{product?.name}</h2>
         </div>
-        <div style={{ justifyContent: "center" }}>
+        <div>
           <h2>R$ {(+product?.value).toFixed(2)}</h2>
         </div>
-        <div style={{ justifyContent: "flex-end" }}>
+        <div>
           <h2>{carrinho[index].quantity}x</h2>
         </div>
       </Main>

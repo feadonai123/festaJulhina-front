@@ -43,12 +43,41 @@ export const Main = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  @media (max-width: 576px) {
+    flex-direction: column;
+    height: fit-content;
+  }
+
   &>div{
     flex: 1;
     display: flex;
     flex-direction: row;
     gap: 0.4rem;
     align-items: center;
+  }
+
+  &>div:nth-child(1){
+    justify-content: flex-start;
+    @media (max-width: 576px) {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+  &>div:nth-child(2){
+    justify-content: center;
+    @media (max-width: 576px) {
+      width: 100%;
+      justify-content: flex-start;
+      margin-left: 2rem;
+    }
+  }
+  &>div:nth-child(3){
+    justify-content: flex-end;
+    @media (max-width: 576px) {
+      width: 100%;
+      justify-content: flex-start;
+      margin-left: 2rem;
+    }
   }
 
   img{
@@ -84,6 +113,10 @@ export const ButtonsCollapse = styled.div`
   flex-direction: row;
   gap: 1rem;
   justify-content: flex-end;
+
+  @media (max-width: 576px) {
+    justify-content: center;
+  }
 
   &>div{
     display: flex;
